@@ -1,8 +1,7 @@
-<!DOCTYPE html><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
-  <meta name="apple-mobile-web-app-capable" content="yes" />
-<title>Glider Hunter v20</title>
+<html lang="en"><head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Glider Hunter v18</title>
 <style>
   * { box-sizing: border-box; margin: 0; padding: 0; }
   body { font-family: system-ui, sans-serif; background: #f4f3ee; color: #2c2c2a; padding: 12px; }
@@ -14,12 +13,7 @@
   @media (max-width: 900px) { #main-row { grid-template-columns: 1fr; } }
   #canvas-wrap { border: 0.5px solid #cac8bf; border-radius: 12px; overflow: hidden; position: relative; flex-shrink: 0; }
   @media (prefers-color-scheme: dark) { #canvas-wrap { border-color: #44423e; } }
-  canvas { display: block; cursor: crosshair; touch-action: none; }
-  @media (max-width: 600px) {
-    #main-row { grid-template-columns: 1fr !important; }
-    #top-bar { gap: 6px; }
-    h1 { font-size: 14px; }
-  }
+  canvas { display: block; cursor: crosshair; }
   #replay-banner { display: none; position: absolute; top: 8px; left: 50%; transform: translateX(-50%);
     background: rgba(26,95,168,0.92); color: #fff; font-size: 12px; font-weight: 500;
     padding: 5px 16px; border-radius: 20px; pointer-events: none; white-space: nowrap; }
@@ -128,21 +122,21 @@
 </head>
 <body>
 <div id="app">
-  <h1>Glider Hunter — v20</h1>
+  <h1>Glider Hunter — v18</h1>
 
   <div id="top-bar">
-    <button class="primary" id="btn-play">⏸ Pause</button>
+    <button class="" id="btn-play">▶ Play</button>
     <button id="btn-step">Step</button>
     <button id="btn-reseed">New seed</button>
     <button id="btn-clear">Clear</button>
     <button class="active-green" id="btn-auto">Auto-reseed ON</button>
     <div class="speed-field">
       <label>Steps/s:</label>
-      <input type="number" id="speed" min="1" max="100000" value="30" />
+      <input type="number" id="speed" min="1" max="100000" value="30">
     </div>
     <button id="btn-save" style="background:#e1f5ee;color:#0f6e56;border-color:#1d9e75;font-weight:500">💾 Save</button>
-    <div class="stat">Gen <b id="gen">802</b></div>
-    <div class="stat">Alive <b id="alive">16</b></div>
+    <div class="stat">Gen <b id="gen">298</b></div>
+    <div class="stat">Alive <b id="alive">132</b></div>
     <div class="stat">Candidates <b id="total-candidates">0</b></div>
   </div>
 
@@ -173,8 +167,8 @@
       <div class="panel">
         <div class="panel-title">Center of mass — zero crossing detector</div>
         <div class="sign-indicator">
-          <div class="sign-box" id="sign-x">x: -3.24</div>
-          <div class="sign-box" id="sign-y">y: 6.21</div>
+          <div class="sign-box" id="sign-x">x: -1.18</div>
+          <div class="sign-box" id="sign-y">y: 0.09</div>
         </div>
         <div class="com-stats">
           <div class="com-stat">crossings: <b id="crossings">0</b></div>
@@ -182,16 +176,16 @@
         </div>
         <canvas id="com-canvas" height="70" width="387"></canvas>
         <div id="phase-bar-wrap">
-          <div id="phase-label"><span id="phase-left">warmup — 698 gens left</span><span id="phase-right">then watch 300 gens</span></div>
-          <div id="phase-track"><div id="phase-fill" style="width: 44.5556%; background: rgb(180, 178, 169);"></div></div>
+          <div id="phase-label"><span id="phase-left">warmup — 1202 gens left</span><span id="phase-right">then watch 300 gens</span></div>
+          <div id="phase-track"><div id="phase-fill" style="width: 16.5556%; background: rgb(180, 178, 169);"></div></div>
         </div>
         <div class="ctrl-row">
           <label>Warmup (gens):</label>
-          <input type="number" id="warmup-input" min="1" max="100000" step="10" value="1500" style="width:90px" />
+          <input type="number" id="warmup-input" min="1" max="100000" step="10" value="1500" style="width:90px">
         </div>
         <div class="ctrl-row">
           <label>Watch (gens):</label>
-          <input type="number" id="watch-input" min="1" max="100000" step="10" value="300" style="width:90px" />
+          <input type="number" id="watch-input" min="1" max="100000" step="10" value="300" style="width:90px">
         </div>
       </div>
 
@@ -205,7 +199,7 @@
           <button id="btn-resume">▶ Resume live</button>
           <button id="btn-delete-snap">Delete this</button>
           <button class="promote-btn hidden" id="btn-promote">★ Add to catalogue</button>
-          <span style="font-size:12px;color:#888780" id="replay-label">#10 · whitenoise · gen 1511 · axis y</span>
+          <span style="font-size:12px;color:#888780" id="replay-label">#160 · whitenoise · gen 1535 · axis y</span>
         </div>
       </div>
 
@@ -238,29 +232,29 @@
           <span style="font-size:11px;color:#888780">Click name to rename</span>
         </div>
         <div id="cat-list">
-    <div class="cat-entry" id="cat-2">
+    <div class="cat-entry" id="cat-5">
       <div class="cat-entry-top">
-        <img class="cat-thumb" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADgAAAA4CAYAAACohjseAAABSUlEQVR4AeyTMQrCQBBFh4hYWAgWFtpapE6TU9h5AyuPYC5g4QGs7D2DN0gjlhaKjYpVwM4gqGyCyla7RX7YhC+MyYZh/p//Eu92Pb3rXJ7U/McFqw6YBEnQ8QT4ijoOyGiPBI0ROd5Ago4DMtojQWNEjjeQoOOAjPZIUIuoggcSrCA0zTIJanFU8ECCRUGbrvai6pKkRY20mlMawXPykPhwtzJVZBN8QUVttNjJOOzJcuIX6d1qFnxB5UK9ln6/LeGwI4NuSz0qrTy0Uvp8ZRLR+ijBLP5V9rCEP/iCrWYu0cgvJaykS8Bl1Xe3nYeyiQJR12/pNnAn+II463aTuaBdTu52kaC7bOycIQnaOQB3cUFwwPDxJAiPGCxAguCA4eNJEB4xWIAEwQHDx5MgPGKwAAmCA4aPJ0F4xGABEgQH/B8Puqs9wQ8AAAD//+42WUoAAAAGSURBVAMAniH1EdEJ5CQAAAAASUVORK5CYII=" onclick="loadCatEntry(2)" title="Click to replay" />
+        <img class="cat-thumb" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADgAAAA4CAYAAACohjseAAABKUlEQVR4AeyRIQ7CYAyF/yxB4lCcAkM4BWdAIxGcAcEZ8DgEp8AQJIIEBUEQEoIiiNFOTJQZaP6mJW9pt3RL97/3vuJyPpYW3Z+syu5oWbfFmXxGkf78MjO4nvbSdjao2ypXM4NWhuQ5MCgTiTaDYDRiUi8IykSizSAYjZjUC4IykWgzCEYjJvWCoEwk2vwdwWjuSC8MUgihCwRD4yPxIEghhC4QDI2PxIMghRC6QDA0PhIPghRC6ALB0PhIPAhSCL+Wiz0QdIFBIQIEFeG5WAVBFxgUIkBQEZ6LVRB0gUEhAgQV4blYBUEXGBQiQFARXuPqeLFP3I0fM7w0J7g53BN3Bi+Nv8xukGkN57vaVKfdStwfajK9yG6QdZ9uT35UfX28Enc1GNzeAAAA//8yeroUAAAABklEQVQDAFOE5eF94q05AAAAAElFTkSuQmCC" onclick="loadCatEntry(5)" title="Click to replay">
         <div class="cat-name-row">
-          <span class="cat-name" id="cat-name-2" onclick="startRename(2)">Glider</span>
-          <span class="cat-meta">#2 · whitenoise · gen 1548 · axis x</span>
+          <span class="cat-name" id="cat-name-5" onclick="startRename(5)">Glider</span>
+          <span class="cat-meta">#157 · whitenoise · gen 1504 · axis x</span>
         </div>
         <div class="cat-actions">
-          <button class="cat-btn" onclick="loadCatEntry(2)">▶ Replay</button>
-          <button class="cat-btn del" onclick="deleteCatEntry(2)">✕</button>
+          <button class="cat-btn" onclick="loadCatEntry(5)">▶ Replay</button>
+          <button class="cat-btn del" onclick="deleteCatEntry(5)">✕</button>
         </div>
       </div>
     </div>
-    <div class="cat-entry" id="cat-1">
+    <div class="cat-entry" id="cat-4">
       <div class="cat-entry-top">
-        <img class="cat-thumb" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADgAAAA4CAYAAACohjseAAAB5ElEQVR4AeyZPUtCYRTHT1fxrRASC0wiCBqCgl72aiiIoLUhh/wA0VZjQ2NbEbTWUF+goYaGojkITBoaGkRp0SGSiELz/+ADIbfnWlE853KE4/++cPH8zu86Heex9FD3cznk848AchcsBsWg5RMwvqK7ZwVCHVyWLMf4uj0jIB7jDIf+jYDxaIDW5vvp9KZMG8f3lN3Pq7wrVvEsizICZqf7CDXQE6HzXIXKz28qWZA1mzQC4v+X2bulfKFK6USYBntjtL081HyURxgBgYDXsSsSoGLllRYnkjQ7mqDhdCdusSgj4FwD5mh1hFamUoSERRZUn5o0AsIUamE8qazhmJh9jIDMWFzbFUDXsTC6+D2DjMB0qwKoJ8E1xSBXc7pvMagnwTXFIFdzum8xqCfBNcUgV3O6bzGoJ8E1xSBXc7pvMagn8YO04hExaIWGXzTBziBWCZnGvgTVDjc7QEABEtlOsQTEngR7k5mta1rayRESmzA3YHaAWAChYqEgPb28U61WV+kGh2vsALHGg7HDqxL6p1R3mC42JxuL2pQ6b/1iBwiAeDRITgcRMhpyVOIY91qLHSBWeDB2sj6mzHltnNkBthryOhdArwnZfl8M2m7Iqz8x6DUh2++LwX8z9Ec/5HuDHwAAAP//oro5qQAAAAZJREFUAwA/gisgsYWR1gAAAABJRU5ErkJggg==" onclick="loadCatEntry(1)" title="Click to replay" />
+        <img class="cat-thumb" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADgAAAA4CAYAAACohjseAAAB6ElEQVR4AeyWTyhEURTGv25JkkQiJClEESuzMxsLGwt/VhSK5cSKlaUNs1BSyoYNCwsWY2FhY0kpRSQy/jSTpmmKiTExMedqau5t6m3QO9OZ5rzzzpnbvO87v/e6Tz2Fg1/5HAp5/hGD3AELQSHo8gnILepyQI7yhKDjiFy+QAi6HJCjPCHoOCKXLxCCLgfkKE8IGiNiWAhBhtAMyULQGAfDQggyhGZIFoLGOBgWQpAhNEMyW4KhWBIUJ7dxI1Mv2yFbg5ehV/T5T7EQuNPZv/eTj26es/2BrUFyUVteSAmU35IpVJQUIBhJ6F7mwNZgT3s5AjOd2J5u17mrsRTR+AcaKosy3nRma1CrTx92jiOgIHKetMl0y/iyN/iS+MT8bhAd9SVYnWjBQFelaXB5/xEURpdZYZvKlq82DsOgyG7+0vm//M24twZz/Q2Y6q3LeT1FP4x1V2N26xqTaxc603nO1QybiiYw5KnCwVkMD9F3neOJFEMruSWrkZVz+Nav9F5CSxaHmzBoPajU5xqK3gjuown9ulNYoED7CwVXQ7Zutelrw9JoMygTPXsB91q11hbD21oGyhTcDdn62W/0tiG7FoP2RLjVQpAbMVuvELQnwq0WgtyI2XqFoD0RbrV7CP7R5PLe4DcAAAD//0p8tbAAAAAGSURBVAMAI8hDIHtjkEgAAAAASUVORK5CYII=" onclick="loadCatEntry(4)" title="Click to replay">
         <div class="cat-name-row">
-          <span class="cat-name" id="cat-name-1" onclick="startRename(1)">2 Gliders</span>
-          <span class="cat-meta">#1 · whitenoise · gen 1520 · axis x</span>
+          <span class="cat-name" id="cat-name-4" onclick="startRename(4)">2 Gliders</span>
+          <span class="cat-meta">#107 · whitenoise · gen 1503 · axis x</span>
         </div>
         <div class="cat-actions">
-          <button class="cat-btn" onclick="loadCatEntry(1)">▶ Replay</button>
-          <button class="cat-btn del" onclick="deleteCatEntry(1)">✕</button>
+          <button class="cat-btn" onclick="loadCatEntry(4)">▶ Replay</button>
+          <button class="cat-btn del" onclick="deleteCatEntry(4)">✕</button>
         </div>
       </div>
     </div></div>
@@ -274,7 +268,7 @@
 
 <!-- SAVED_STATE_START -->
 <script id="saved-state-tag">
-window.__GLIDER_SAVED_STATE__ = JSON.parse(`{"version":15,"settings":{"birthSet":[3],"surviveSet":[2,3],"seedMethod":"whitenoise","warmupGens":1500,"watchGens":300,"speed":300},"catalogue":[{"id":2,"name":"Glider","cells":"AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEBAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA","seedCells":"AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAABAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAQEBAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQABAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQABAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQEAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAEBAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAQABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEBAAEAAQEAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAEAAAABAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA","gen":1548,"thumb":"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADgAAAA4CAYAAACohjseAAABSUlEQVR4AeyTMQrCQBBFh4hYWAgWFtpapE6TU9h5AyuPYC5g4QGs7D2DN0gjlhaKjYpVwM4gqGyCyla7RX7YhC+MyYZh/p//Eu92Pb3rXJ7U/McFqw6YBEnQ8QT4ijoOyGiPBI0ROd5Ago4DMtojQWNEjjeQoOOAjPZIUIuoggcSrCA0zTIJanFU8ECCRUGbrvai6pKkRY20mlMawXPykPhwtzJVZBN8QUVttNjJOOzJcuIX6d1qFnxB5UK9ln6/LeGwI4NuSz0qrTy0Uvp8ZRLR+ijBLP5V9rCEP/iCrWYu0cgvJaykS8Bl1Xe3nYeyiQJR12/pNnAn+II463aTuaBdTu52kaC7bOycIQnaOQB3cUFwwPDxJAiPGCxAguCA4eNJEB4xWIAEwQHDx5MgPGKwAAmCA4aPJ0F4xGABEgQH/B8Puqs9wQ8AAAD//+42WUoAAAAGSURBVAMAniH1EdEJ5CQAAAAASUVORK5CYII=","meta":"#2 · whitenoise · gen 1548 · axis x"},{"id":1,"name":"2 Gliders","cells":"AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEBAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEBAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA","seedCells":"AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAEBAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEBAAAAAAEBAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQABAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAEBAAABAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQEAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA","gen":1520,"thumb":"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADgAAAA4CAYAAACohjseAAAB5ElEQVR4AeyZPUtCYRTHT1fxrRASC0wiCBqCgl72aiiIoLUhh/wA0VZjQ2NbEbTWUF+goYaGojkITBoaGkRp0SGSiELz/+ADIbfnWlE853KE4/++cPH8zu86Heex9FD3cznk848AchcsBsWg5RMwvqK7ZwVCHVyWLMf4uj0jIB7jDIf+jYDxaIDW5vvp9KZMG8f3lN3Pq7wrVvEsizICZqf7CDXQE6HzXIXKz28qWZA1mzQC4v+X2bulfKFK6USYBntjtL081HyURxgBgYDXsSsSoGLllRYnkjQ7mqDhdCdusSgj4FwD5mh1hFamUoSERRZUn5o0AsIUamE8qazhmJh9jIDMWFzbFUDXsTC6+D2DjMB0qwKoJ8E1xSBXc7pvMagnwTXFIFdzum8xqCfBNcUgV3O6bzGoJ8E1xSBXc7pvMagn8YO04hExaIWGXzTBziBWCZnGvgTVDjc7QEABEtlOsQTEngR7k5mta1rayRESmzA3YHaAWAChYqEgPb28U61WV+kGh2vsALHGg7HDqxL6p1R3mC42JxuL2pQ6b/1iBwiAeDRITgcRMhpyVOIY91qLHSBWeDB2sj6mzHltnNkBthryOhdArwnZfl8M2m7Iqz8x6DUh2++LwX8z9Ec/5HuDHwAAAP//oro5qQAAAAZJREFUAwA/gisgsYWR1gAAAABJRU5ErkJggg==","meta":"#1 · whitenoise · gen 1520 · axis x"}],"candidates":[],"catIdCounter":2,"snapIdCounter":10}`);
+window.__GLIDER_SAVED_STATE__ = JSON.parse(`{"version":15,"settings":{"birthSet":[3],"surviveSet":[2,3],"seedMethod":"whitenoise","warmupGens":1500,"watchGens":300,"speed":300},"catalogue":[{"id":5,"name":"Glider","cells":"AAAAAAAAAAAAAAAAAAABAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAQAAAAAAAAAAAAAAAAAA","seedCells":"AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEBAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAEAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEBAQAAAQEAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAQEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAABAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAABAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQABAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAEBAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEBAQABAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA","gen":1504,"thumb":"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADgAAAA4CAYAAACohjseAAABKUlEQVR4AeyRIQ7CYAyF/yxB4lCcAkM4BWdAIxGcAcEZ8DgEp8AQJIIEBUEQEoIiiNFOTJQZaP6mJW9pt3RL97/3vuJyPpYW3Z+syu5oWbfFmXxGkf78MjO4nvbSdjao2ypXM4NWhuQ5MCgTiTaDYDRiUi8IykSizSAYjZjUC4IykWgzCEYjJvWCoEwk2vwdwWjuSC8MUgihCwRD4yPxIEghhC4QDI2PxIMghRC6QDA0PhIPghRC6ALB0PhIPAhSCL+Wiz0QdIFBIQIEFeG5WAVBFxgUIkBQEZ6LVRB0gUEhAgQV4blYBUEXGBQiQFARXuPqeLFP3I0fM7w0J7g53BN3Bi+Nv8xukGkN57vaVKfdStwfajK9yG6QdZ9uT35UfX28Enc1GNzeAAAA//8yeroUAAAABklEQVQDAFOE5eF94q05AAAAAElFTkSuQmCC","meta":"#157 · whitenoise · gen 1504 · axis x"},{"id":4,"name":"2 Gliders","cells":"AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEBAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEBAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA","seedCells":"AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAABAQAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAABAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAEBAAAAAQAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAQEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAABAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAEBAAABAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAQEBAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAEBAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA","gen":1503,"thumb":"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADgAAAA4CAYAAACohjseAAAB6ElEQVR4AeyWTyhEURTGv25JkkQiJClEESuzMxsLGwt/VhSK5cSKlaUNs1BSyoYNCwsWY2FhY0kpRSQy/jSTpmmKiTExMedqau5t6m3QO9OZ5rzzzpnbvO87v/e6Tz2Fg1/5HAp5/hGD3AELQSHo8gnILepyQI7yhKDjiFy+QAi6HJCjPCHoOCKXLxCCLgfkKE8IGiNiWAhBhtAMyULQGAfDQggyhGZIFoLGOBgWQpAhNEMyW4KhWBIUJ7dxI1Mv2yFbg5ehV/T5T7EQuNPZv/eTj26es/2BrUFyUVteSAmU35IpVJQUIBhJ6F7mwNZgT3s5AjOd2J5u17mrsRTR+AcaKosy3nRma1CrTx92jiOgIHKetMl0y/iyN/iS+MT8bhAd9SVYnWjBQFelaXB5/xEURpdZYZvKlq82DsOgyG7+0vm//M24twZz/Q2Y6q3LeT1FP4x1V2N26xqTaxc603nO1QybiiYw5KnCwVkMD9F3neOJFEMruSWrkZVz+Nav9F5CSxaHmzBoPajU5xqK3gjuown9ulNYoED7CwVXQ7Zutelrw9JoMygTPXsB91q11hbD21oGyhTcDdn62W/0tiG7FoP2RLjVQpAbMVuvELQnwq0WgtyI2XqFoD0RbrV7CP7R5PLe4DcAAAD//0p8tbAAAAAGSURBVAMAI8hDIHtjkEgAAAAASUVORK5CYII=","meta":"#107 · whitenoise · gen 1503 · axis x"}],"candidates":[],"catIdCounter":5,"snapIdCounter":160}`);
 </script>
 <!-- SAVED_STATE_END -->
 
@@ -304,7 +298,7 @@ const SEED_C0 = Math.floor((COLS - SEED_SIZE) / 2);
 
 let cells = new Uint8Array(ROWS * COLS);
 let next  = new Uint8Array(ROWS * COLS);
-let gen = 0, running = false;
+let gen = 0, running = true;
 let birthSet = new Set([3]), surviveSet = new Set([2, 3]);
 let autoReseed = true;
 let WARMUP_GENS = 1500, WATCH_GENS = 300;
@@ -328,22 +322,22 @@ const SEED_METHODS = {
   whitenoise: {
     label: 'White noise (original)',
     desc: 'Uniform random fill at 35% density across the entire 10×10 zone.',
-    fn: () =&gt; {
-      for (let r = SEED_R0; r &lt; SEED_R0 + SEED_SIZE; r++)
-        for (let c = SEED_C0; c &lt; SEED_C0 + SEED_SIZE; c++)
-          cells[idx(r, c)] = Math.random() &lt; 0.35 ? 1 : 0;
+    fn: () => {
+      for (let r = SEED_R0; r < SEED_R0 + SEED_SIZE; r++)
+        for (let c = SEED_C0; c < SEED_C0 + SEED_SIZE; c++)
+          cells[idx(r, c)] = Math.random() < 0.35 ? 1 : 0;
     }
   },
   sparse: {
     label: 'Sparse clusters',
     desc: 'A few small clumps of 3–5 cells separated by empty space — less noise, more room to interact.',
-    fn: () =&gt; {
+    fn: () => {
       const numClusters = 5 + Math.floor(Math.random() * 4);
-      for (let k = 0; k &lt; numClusters; k++) {
+      for (let k = 0; k < numClusters; k++) {
         const cr = SEED_R0 + 1 + Math.floor(Math.random() * (SEED_SIZE - 2));
         const cc = SEED_C0 + 1 + Math.floor(Math.random() * (SEED_SIZE - 2));
         const size = 3 + Math.floor(Math.random() * 3);
-        for (let i = 0; i &lt; size; i++) {
+        for (let i = 0; i < size; i++) {
           const dr = Math.floor(Math.random() * 3) - 1;
           const dc = Math.floor(Math.random() * 3) - 1;
           const rr = Math.min(SEED_R0 + SEED_SIZE - 1, Math.max(SEED_R0, cr + dr));
@@ -356,25 +350,25 @@ const SEED_METHODS = {
   asymmetric: {
     label: 'Asymmetric half',
     desc: 'Only the left half of the seed zone is filled — breaks symmetry, giving gliders a preferred escape direction.',
-    fn: () =&gt; {
+    fn: () => {
       const halfW = Math.floor(SEED_SIZE / 2);
-      for (let r = SEED_R0; r &lt; SEED_R0 + SEED_SIZE; r++)
-        for (let c = SEED_C0; c &lt; SEED_C0 + halfW; c++)
-          cells[idx(r, c)] = Math.random() &lt; 0.4 ? 1 : 0;
+      for (let r = SEED_R0; r < SEED_R0 + SEED_SIZE; r++)
+        for (let c = SEED_C0; c < SEED_C0 + halfW; c++)
+          cells[idx(r, c)] = Math.random() < 0.4 ? 1 : 0;
     }
   },
   gradient: {
     label: 'Density gradient',
     desc: 'Higher density at the centre of the seed zone, tapering to near-zero at the edges — gives patterns room to breathe as they expand.',
-    fn: () =&gt; {
+    fn: () => {
       const cr = SEED_R0 + SEED_SIZE / 2 - 0.5;
       const cc = SEED_C0 + SEED_SIZE / 2 - 0.5;
       const maxDist = Math.sqrt(2) * SEED_SIZE / 2;
-      for (let r = SEED_R0; r &lt; SEED_R0 + SEED_SIZE; r++) {
-        for (let c = SEED_C0; c &lt; SEED_C0 + SEED_SIZE; c++) {
+      for (let r = SEED_R0; r < SEED_R0 + SEED_SIZE; r++) {
+        for (let c = SEED_C0; c < SEED_C0 + SEED_SIZE; c++) {
           const dist = Math.sqrt((r - cr) ** 2 + (c - cc) ** 2);
           const density = 0.6 * (1 - dist / maxDist);
-          cells[idx(r, c)] = Math.random() &lt; density ? 1 : 0;
+          cells[idx(r, c)] = Math.random() < density ? 1 : 0;
         }
       }
     }
@@ -382,9 +376,9 @@ const SEED_METHODS = {
   polyominoes: {
     label: 'Random polyominoes',
     desc: 'Places 4–7 randomly grown connected blobs of 3–6 cells each — more likely to produce metastable structures than raw noise.',
-    fn: () =&gt; {
+    fn: () => {
       const numBlobs = 4 + Math.floor(Math.random() * 4);
-      for (let k = 0; k &lt; numBlobs; k++) {
+      for (let k = 0; k < numBlobs; k++) {
         // Pick a random starting cell inside the seed zone
         let r = SEED_R0 + 1 + Math.floor(Math.random() * (SEED_SIZE - 2));
         let c = SEED_C0 + 1 + Math.floor(Math.random() * (SEED_SIZE - 2));
@@ -392,13 +386,13 @@ const SEED_METHODS = {
         const blob = [[r, c]];
         cells[idx(r, c)] = 1;
         // Grow the blob by random walk from existing cells
-        for (let i = 1; i &lt; blobSize; i++) {
+        for (let i = 1; i < blobSize; i++) {
           const [br, bc] = blob[Math.floor(Math.random() * blob.length)];
           const dirs = [[-1,0],[1,0],[0,-1],[0,1]];
           const [dr, dc] = dirs[Math.floor(Math.random() * 4)];
           const nr = br + dr, nc = bc + dc;
-          if (nr &gt;= SEED_R0 &amp;&amp; nr &lt; SEED_R0 + SEED_SIZE &amp;&amp;
-              nc &gt;= SEED_C0 &amp;&amp; nc &lt; SEED_C0 + SEED_SIZE) {
+          if (nr >= SEED_R0 && nr < SEED_R0 + SEED_SIZE &&
+              nc >= SEED_C0 && nc < SEED_C0 + SEED_SIZE) {
             cells[idx(nr, nc)] = 1;
             blob.push([nr, nc]);
           }
@@ -409,10 +403,10 @@ const SEED_METHODS = {
   lowdensity: {
     label: 'Low density soup',
     desc: 'Uniform random fill at just 15% density across the full zone — very sparse, maximises the chance a lone spaceship survives without being destroyed.',
-    fn: () =&gt; {
-      for (let r = SEED_R0; r &lt; SEED_R0 + SEED_SIZE; r++)
-        for (let c = SEED_C0; c &lt; SEED_C0 + SEED_SIZE; c++)
-          cells[idx(r, c)] = Math.random() &lt; 0.15 ? 1 : 0;
+    fn: () => {
+      for (let r = SEED_R0; r < SEED_R0 + SEED_SIZE; r++)
+        for (let c = SEED_C0; c < SEED_C0 + SEED_SIZE; c++)
+          cells[idx(r, c)] = Math.random() < 0.15 ? 1 : 0;
     }
   }
 };
@@ -429,8 +423,8 @@ function updateSeedDesc() {
 $('seed-method').onchange = updateSeedDesc;
 
   
-$('warmup-input').oninput = function() { const v = parseInt(this.value); if (!isNaN(v) &amp;&amp; v &gt; 0) { WARMUP_GENS = v; updateRuleDisplay(); } };
-$('watch-input').oninput  = function() { const v = parseInt(this.value); if (!isNaN(v) &amp;&amp; v &gt; 0) { WATCH_GENS  = v; updateRuleDisplay(); } };
+$('warmup-input').oninput = function() { const v = parseInt(this.value); if (!isNaN(v) && v > 0) { WARMUP_GENS = v; updateRuleDisplay(); } };
+$('watch-input').oninput  = function() { const v = parseInt(this.value); if (!isNaN(v) && v > 0) { WATCH_GENS  = v; updateRuleDisplay(); } };
 
 $('btn-auto').onclick = function () {
   autoReseed = !autoReseed;
@@ -438,14 +432,14 @@ $('btn-auto').onclick = function () {
   this.className   = autoReseed ? 'active-green' : '';
 };
 
-const idx = (r, c) =&gt; r * COLS + c;
+const idx = (r, c) => r * COLS + c;
 function wrap(r, c) { return [((r % ROWS) + ROWS) % ROWS, ((c % COLS) + COLS) % COLS]; }
 function neighbors(r, c) {
   return [[-1,-1],[-1,0],[-1,1],[0,-1],[0,1],[1,-1],[1,0],[1,1]]
-    .map(([dr, dc]) =&gt; wrap(r + dr, c + dc));
+    .map(([dr, dc]) => wrap(r + dr, c + dc));
 }
 
-const dark = () =&gt; window.matchMedia('(prefers-color-scheme: dark)').matches;
+const dark = () => window.matchMedia('(prefers-color-scheme: dark)').matches;
 
 function render() {
   const ac = dark() ? '#378add' : '#1a5fa8';
@@ -457,26 +451,26 @@ function render() {
   ctx.strokeRect(SEED_C0*CELL, SEED_R0*CELL, SEED_SIZE*CELL, SEED_SIZE*CELL);
   ctx.setLineDash([]);
   ctx.strokeStyle = gc; ctx.lineWidth = 0.5;
-  for (let r = 0; r &lt;= ROWS; r++) { ctx.beginPath(); ctx.moveTo(0, r*CELL); ctx.lineTo(W, r*CELL); ctx.stroke(); }
-  for (let c = 0; c &lt;= COLS; c++) { ctx.beginPath(); ctx.moveTo(c*CELL, 0); ctx.lineTo(c*CELL, H); ctx.stroke(); }
+  for (let r = 0; r <= ROWS; r++) { ctx.beginPath(); ctx.moveTo(0, r*CELL); ctx.lineTo(W, r*CELL); ctx.stroke(); }
+  for (let c = 0; c <= COLS; c++) { ctx.beginPath(); ctx.moveTo(c*CELL, 0); ctx.lineTo(c*CELL, H); ctx.stroke(); }
   ctx.fillStyle = ac;
   let alive = 0;
-  for (let r = 0; r &lt; ROWS; r++) for (let c = 0; c &lt; COLS; c++)
+  for (let r = 0; r < ROWS; r++) for (let c = 0; c < COLS; c++)
     if (cells[idx(r, c)]) { alive++; ctx.fillRect(c*CELL+1, r*CELL+1, CELL-2, CELL-2); }
   $text('alive', alive);
 }
 
 function computeCoM() {
   let sx = 0, sy = 0, n = 0;
-  for (let r = 0; r &lt; ROWS; r++) for (let c = 0; c &lt; COLS; c++)
+  for (let r = 0; r < ROWS; r++) for (let c = 0; c < COLS; c++)
     if (cells[idx(r, c)]) { sx += c; sy += r; n++; }
   return n === 0 ? null : { x: sx / n, y: sy / n };
 }
 
 function centeredWrap(val, ref, size) {
   let d = val - ref;
-  if (d &gt;  size / 2) d -= size;
-  if (d &lt; -size / 2) d += size;
+  if (d >  size / 2) d -= size;
+  if (d < -size / 2) d += size;
   return d;
 }
 
@@ -486,7 +480,7 @@ function makeThumbnail(snapCells) {
   const cw = 56 / COLS, ch = 56 / ROWS;
   tx.fillStyle = dark() ? '#1e1e1c' : '#e8e6df'; tx.fillRect(0, 0, 56, 56);
   tx.fillStyle = '#1a5fa8';
-  for (let r = 0; r &lt; ROWS; r++) for (let c = 0; c &lt; COLS; c++)
+  for (let r = 0; r < ROWS; r++) for (let c = 0; c < COLS; c++)
     if (snapCells[idx(r, c)]) tx.fillRect(c*cw, r*ch, Math.ceil(cw), Math.ceil(ch));
   return tc.toDataURL();
 }
@@ -494,21 +488,10 @@ function makeThumbnail(snapCells) {
 // --- Audio ---
 let audioCtx = null;
 function getAudioCtx() {
-  if (!audioCtx) {
-    audioCtx = new (window.AudioContext || window.webkitAudioContext)();
-  }
-  // iOS requires resume() inside a user gesture
+  if (!audioCtx) audioCtx = new (window.AudioContext || window.webkitAudioContext)();
   if (audioCtx.state === 'suspended') audioCtx.resume();
   return audioCtx;
 }
-// Unlock audio on first tap/click anywhere (iOS requirement)
-function unlockAudio() {
-  getAudioCtx();
-  document.removeEventListener('touchstart', unlockAudio);
-  document.removeEventListener('mousedown', unlockAudio);
-}
-document.addEventListener('touchstart', unlockAudio, { once: true });
-document.addEventListener('mousedown', unlockAudio, { once: true });
 function playSciFiPing() {
   try {
     const ac = getAudioCtx();
@@ -546,7 +529,7 @@ function saveSnapshot(axis) {
   const method = getSeedMethod();
   snapshots_registry.unshift({ id, cells: snapCells, seedCells: new Uint8Array(seedSnapshot || snapCells), gen, crossingAxis: axis, thumb,
     label: `#${id} · ${method} · gen ${gen} · axis ${axis}` });
-  if (snapshots_registry.length &gt; 50) snapshots_registry.pop();
+  if (snapshots_registry.length > 50) snapshots_registry.pop();
   updateCandidateCount();
   playSciFiPing();
   updateSnapList();
@@ -555,19 +538,19 @@ function saveSnapshot(axis) {
 function updateSnapList() {
   const el = $('snap-list');
   if (snapshots_registry.length === 0) {
-    el.innerHTML = '&lt;div class="empty-snaps"&gt;No candidates yet — watching for crossings…&lt;/div&gt;';
+    el.innerHTML = '<div class="empty-snaps">No candidates yet — watching for crossings…</div>';
     return;
   }
-  el.innerHTML = snapshots_registry.map(s =&gt; `
-    &lt;div class="snap-entry${replaySnapId === s.id ? ' active' : ''}" onclick="loadSnap(${s.id})"&gt;
-      &lt;img class="snap-thumb" src="${s.thumb}"&gt;
-      &lt;div class="snap-info"&gt;&lt;b&gt;${s.label}&lt;/b&gt;&lt;span&gt;Click to load &amp;amp; replay&lt;/span&gt;&lt;/div&gt;
-      &lt;span class="snap-badge"&gt;candidate&lt;/span&gt;
-    &lt;/div&gt;`).join('');
+  el.innerHTML = snapshots_registry.map(s => `
+    <div class="snap-entry${replaySnapId === s.id ? ' active' : ''}" onclick="loadSnap(${s.id})">
+      <img class="snap-thumb" src="${s.thumb}">
+      <div class="snap-info"><b>${s.label}</b><span>Click to load &amp; replay</span></div>
+      <span class="snap-badge">candidate</span>
+    </div>`).join('');
 }
 
 window.loadSnap = function (id) {
-  const snap = snapshots_registry.find(s =&gt; s.id === id);
+  const snap = snapshots_registry.find(s => s.id === id);
   if (!snap) return;
   if (!replayMode) {
     liveCells = new Uint8Array(cells); liveGen = gen; liveSeedTime = seedTime; livePhase = phase;
@@ -594,27 +577,27 @@ let catalogue = [], catIdCounter = 0;
 function updateCatList() {
   const el = $('cat-list');
   if (catalogue.length === 0) {
-    el.innerHTML = '&lt;div class="empty-cat"&gt;No confirmed spaceships yet — promote a candidate to add one.&lt;/div&gt;';
+    el.innerHTML = '<div class="empty-cat">No confirmed spaceships yet — promote a candidate to add one.</div>';
     return;
   }
-  el.innerHTML = catalogue.map(e =&gt; `
-    &lt;div class="cat-entry" id="cat-${e.id}"&gt;
-      &lt;div class="cat-entry-top"&gt;
-        &lt;img class="cat-thumb" src="${e.thumb}" onclick="loadCatEntry(${e.id})" title="Click to replay"&gt;
-        &lt;div class="cat-name-row"&gt;
-          &lt;span class="cat-name" id="cat-name-${e.id}" onclick="startRename(${e.id})"&gt;${e.name}&lt;/span&gt;
-          &lt;span class="cat-meta"&gt;${e.meta}&lt;/span&gt;
-        &lt;/div&gt;
-        &lt;div class="cat-actions"&gt;
-          &lt;button class="cat-btn" onclick="loadCatEntry(${e.id})"&gt;▶ Replay&lt;/button&gt;
-          &lt;button class="cat-btn del" onclick="deleteCatEntry(${e.id})"&gt;✕&lt;/button&gt;
-        &lt;/div&gt;
-      &lt;/div&gt;
-    &lt;/div&gt;`).join('');
+  el.innerHTML = catalogue.map(e => `
+    <div class="cat-entry" id="cat-${e.id}">
+      <div class="cat-entry-top">
+        <img class="cat-thumb" src="${e.thumb}" onclick="loadCatEntry(${e.id})" title="Click to replay">
+        <div class="cat-name-row">
+          <span class="cat-name" id="cat-name-${e.id}" onclick="startRename(${e.id})">${e.name}</span>
+          <span class="cat-meta">${e.meta}</span>
+        </div>
+        <div class="cat-actions">
+          <button class="cat-btn" onclick="loadCatEntry(${e.id})">▶ Replay</button>
+          <button class="cat-btn del" onclick="deleteCatEntry(${e.id})">✕</button>
+        </div>
+      </div>
+    </div>`).join('');
 }
 
 function startRename(id) {
-  const entry = catalogue.find(e =&gt; e.id === id);
+  const entry = catalogue.find(e => e.id === id);
   if (!entry) return;
   const nameEl = $(`cat-name-${id}`);
   if (!nameEl) return;
@@ -629,11 +612,11 @@ function startRename(id) {
     updateCatList();
   }
   input.onblur = commit;
-  input.onkeydown = e =&gt; { if (e.key === 'Enter') { input.blur(); } if (e.key === 'Escape') { input.value = entry.name; input.blur(); } };
+  input.onkeydown = e => { if (e.key === 'Enter') { input.blur(); } if (e.key === 'Escape') { input.value = entry.name; input.blur(); } };
 }
 
 window.loadCatEntry = function(id) {
-  const entry = catalogue.find(e =&gt; e.id === id);
+  const entry = catalogue.find(e => e.id === id);
   if (!entry) return;
   if (!replayMode) {
     liveCells = new Uint8Array(cells); liveGen = gen; liveSeedTime = seedTime; livePhase = phase;
@@ -654,13 +637,13 @@ window.loadCatEntry = function(id) {
 };
 
 window.deleteCatEntry = function(id) {
-  catalogue = catalogue.filter(e =&gt; e.id !== id);
+  catalogue = catalogue.filter(e => e.id !== id);
   updateCatList();
 };
 
 $('btn-promote').onclick = function() {
   if (!replaySnapId) return;
-  const snap = snapshots_registry.find(s =&gt; s.id === replaySnapId);
+  const snap = snapshots_registry.find(s => s.id === replaySnapId);
   if (!snap) return;
   const id = ++catIdCounter;
   const defaultName = `Spaceship #${id}`;
@@ -669,12 +652,12 @@ $('btn-promote').onclick = function() {
     gen: snap.gen, thumb: snap.thumb, meta: snap.label });
   updateCatList();
   // Remove from candidates
-  snapshots_registry = snapshots_registry.filter(s =&gt; s.id !== replaySnapId);
+  snapshots_registry = snapshots_registry.filter(s => s.id !== replaySnapId);
   updateCandidateCount(); updateSnapList();
   // Exit replay cleanly
   $('btn-resume').click();
   // Prompt rename immediately
-  setTimeout(() =&gt; startRename(id), 50);
+  setTimeout(() => startRename(id), 50);
 };
 
 
@@ -694,7 +677,7 @@ $('btn-resume').onclick = function () {
 };
 
 $('btn-delete-snap').onclick = function () {
-  snapshots_registry = snapshots_registry.filter(s =&gt; s.id !== replaySnapId);
+  snapshots_registry = snapshots_registry.filter(s => s.id !== replaySnapId);
   updateCandidateCount();
   $('btn-resume').click();
   updateSnapList();
@@ -712,16 +695,16 @@ function updatePhaseBar() {
   const total = WARMUP_GENS + WATCH_GENS;
   const fill = $('phase-fill');
   fill.style.width = Math.min(gen / total * 100, 100) + '%';
-  if (gen &lt;= WARMUP_GENS) {
+  if (gen <= WARMUP_GENS) {
     fill.style.background = '#b4b2a9';
     $text('phase-name', 'warmup');
     $text('phase-left', `warmup — ${WARMUP_GENS - gen} gens left`);
     $text('phase-right', `then watch ${WATCH_GENS} gens`);
-  } else if (gen &lt;= WARMUP_GENS + WATCH_GENS) {
-    fill.style.background = crossingCount &gt; 0 ? '#1d9e75' : '#1a5fa8';
+  } else if (gen <= WARMUP_GENS + WATCH_GENS) {
+    fill.style.background = crossingCount > 0 ? '#1d9e75' : '#1a5fa8';
     const remaining = WARMUP_GENS + WATCH_GENS - gen;
-    $text('phase-name', crossingCount &gt; 0 ? 'crossing!' : 'watching');
-    $text('phase-left', crossingCount &gt; 0 ? `${crossingCount} crossing(s)` : 'watching…');
+    $text('phase-name', crossingCount > 0 ? 'crossing!' : 'watching');
+    $text('phase-left', crossingCount > 0 ? `${crossingCount} crossing(s)` : 'watching…');
     $text('phase-right', `reseed in ${remaining} gens`);
   } else {
     fill.style.background = '#b4b2a9';
@@ -742,19 +725,19 @@ function drawCoMPlot() {
   const textC = '#888780';
   comCtx.fillStyle = bg; comCtx.fillRect(0, 0, cw, ch);
   const pts = comHistory.slice(-COM_HISTORY);
-  if (pts.length &gt; 0) {
-    const wfrac = pts.filter(p =&gt; p.phase === 'warmup').length / pts.length;
+  if (pts.length > 0) {
+    const wfrac = pts.filter(p => p.phase === 'warmup').length / pts.length;
     comCtx.fillStyle = 'rgba(0,0,0,0.04)'; comCtx.fillRect(0, 0, wfrac * cw, ch);
   }
   const mid = ch / 2;
   comCtx.strokeStyle = gridC; comCtx.lineWidth = 0.5;
   comCtx.beginPath(); comCtx.moveTo(0, mid); comCtx.lineTo(cw, mid); comCtx.stroke();
-  if (pts.length &gt;= 2) {
-    const xs = pts.map(p =&gt; p.x), ys = pts.map(p =&gt; p.y);
+  if (pts.length >= 2) {
+    const xs = pts.map(p => p.x), ys = pts.map(p => p.y);
     const maxAbs = Math.max(...[...xs, ...ys].map(Math.abs)) || 1, pad = 3;
     function dl(vals, color) {
       comCtx.beginPath(); comCtx.strokeStyle = color; comCtx.lineWidth = 1.5;
-      vals.forEach((v, i) =&gt; {
+      vals.forEach((v, i) => {
         const px = pad + i * (cw - pad*2) / (pts.length - 1);
         const py = mid - (v / maxAbs) * (ch/2 - pad);
         i === 0 ? comCtx.moveTo(px, py) : comCtx.lineTo(px, py);
@@ -790,7 +773,7 @@ function reseed() {
 
 function step() {
   next.fill(0);
-  for (let r = 0; r &lt; ROWS; r++) for (let c = 0; c &lt; COLS; c++) {
+  for (let r = 0; r < ROWS; r++) for (let c = 0; c < COLS; c++) {
     let n = 0;
     for (const [nr, nc] of neighbors(r, c)) n += cells[idx(nr, nc)];
     const alive = cells[idx(r, c)];
@@ -798,8 +781,8 @@ function step() {
   }
   [cells, next] = [next, cells]; gen++;
 
-  if      (gen &lt;= WARMUP_GENS)                   phase = 'warmup';
-  else if (gen &lt;= WARMUP_GENS + WATCH_GENS)       phase = 'watch';
+  if      (gen <= WARMUP_GENS)                   phase = 'warmup';
+  else if (gen <= WARMUP_GENS + WATCH_GENS)       phase = 'watch';
   else                                             phase = 'done';
 
   const com = computeCoM();
@@ -808,21 +791,21 @@ function step() {
     const cx = centeredWrap(com.x, comRef.x, COLS);
     const cy = centeredWrap(com.y, comRef.y, ROWS);
     comHistory.push({ x: cx, y: cy, phase });
-    if (comHistory.length &gt; COM_HISTORY * 2) comHistory = comHistory.slice(-COM_HISTORY);
+    if (comHistory.length > COM_HISTORY * 2) comHistory = comHistory.slice(-COM_HISTORY);
 
     if (phase === 'watch') {
-      const sx = cx &gt;  0.2 ? 1 : cx &lt; -0.2 ? -1 : 0;
-      const sy = cy &gt;  0.2 ? 1 : cy &lt; -0.2 ? -1 : 0;
+      const sx = cx >  0.2 ? 1 : cx < -0.2 ? -1 : 0;
+      const sy = cy >  0.2 ? 1 : cy < -0.2 ? -1 : 0;
       let axis = null;
-      if (lastSignX !== null &amp;&amp; sx !== 0 &amp;&amp; lastSignX !== 0 &amp;&amp; sx !== lastSignX) { crossingCount++; axis = 'x'; }
-      if (lastSignY !== null &amp;&amp; sy !== 0 &amp;&amp; lastSignY !== 0 &amp;&amp; sy !== lastSignY) { crossingCount++; axis = axis ? 'x+y' : 'y'; }
+      if (lastSignX !== null && sx !== 0 && lastSignX !== 0 && sx !== lastSignX) { crossingCount++; axis = 'x'; }
+      if (lastSignY !== null && sy !== 0 && lastSignY !== 0 && sy !== lastSignY) { crossingCount++; axis = axis ? 'x+y' : 'y'; }
       if (sx !== 0) lastSignX = sx;
       if (sy !== 0) lastSignY = sy;
       if (axis) {
         saveSnapshot(axis);
         $('sign-x').classList.add('crossed');
         $('sign-y').classList.add('crossed');
-        setTimeout(() =&gt; {
+        setTimeout(() => {
           $('sign-x').classList.remove('crossed');
           $('sign-y').classList.remove('crossed');
         }, 500);
@@ -833,7 +816,7 @@ function step() {
     $text('sign-y', `y: ${cy.toFixed(2)}`);
   }
 
-  if (!replayMode &amp;&amp; autoReseed &amp;&amp; phase === 'done') reseed();
+  if (!replayMode && autoReseed && phase === 'done') reseed();
 }
 
 function loop(ts) {
@@ -845,7 +828,7 @@ function loop(ts) {
   const maxSteps = Math.ceil(sps * 0.5);
   const stepsThisFrame = Math.min(Math.floor(stepDebt), maxSteps);
   stepDebt -= stepsThisFrame;
-  for (let i = 0; i &lt; stepsThisFrame; i++) step();
+  for (let i = 0; i < stepsThisFrame; i++) step();
   $text('gen', gen);
   updatePhaseBar();
   drawCoMPlot();
@@ -855,7 +838,7 @@ function loop(ts) {
 
 function getTargetSPS() {
   const v = parseInt($('speed').value);
-  return isNaN(v) || v &lt; 1 ? 1 : v;
+  return isNaN(v) || v < 1 ? 1 : v;
 }
 
 function togglePlay() {
@@ -867,17 +850,17 @@ function togglePlay() {
 }
 
 $('btn-play').onclick = togglePlay;
-$('btn-step').onclick = () =&gt; {
+$('btn-step').onclick = () => {
   if (!running) { step(); render(); drawCoMPlot(); updatePhaseBar(); $text('gen', gen); }
 };
-$('btn-reseed').onclick = () =&gt; {
+$('btn-reseed').onclick = () => {
   replayMode = false;
   $('replay-banner').style.display = 'none';
   $('replay-controls').classList.remove('visible');
   $('canvas-wrap').style.borderColor = '';
   reseed();
 };
-$('btn-clear').onclick = () =&gt; {
+$('btn-clear').onclick = () => {
   cells.fill(0); gen = 0; comHistory = []; comRef = null;
   crossingCount = 0; lastSignX = null; lastSignY = null; savedThisSeed = false;
   seedTime = Date.now(); phase = 'warmup';
@@ -888,17 +871,17 @@ $('btn-clear').onclick = () =&gt; {
 
 function buildToggles(cid, set, max) {
   const el = $(cid); if (!el) return; el.innerHTML = '';
-  for (let n = 0; n &lt;= max; n++) {
+  for (let n = 0; n <= max; n++) {
     const btn = document.createElement('button');
     btn.className = 'nb-btn' + (set.has(n) ? ' on' : '');
     btn.textContent = n;
-    btn.onclick = () =&gt; { set.has(n) ? set.delete(n) : set.add(n); btn.classList.toggle('on', set.has(n)); updateRuleDisplay(); };
+    btn.onclick = () => { set.has(n) ? set.delete(n) : set.add(n); btn.classList.toggle('on', set.has(n)); updateRuleDisplay(); };
     el.appendChild(btn);
   }
 }
 function updateRuleDisplay() {
-  const b = [...birthSet].sort((a,b)=&gt;a-b).join('');
-  const s = [...surviveSet].sort((a,b)=&gt;a-b).join('');
+  const b = [...birthSet].sort((a,b)=>a-b).join('');
+  const s = [...surviveSet].sort((a,b)=>a-b).join('');
   const method = getSeedMethod();
   $text('info-bar', `Rule: B${b}/S${s} · 30×30 torus · Seed: ${method} · Warmup ${WARMUP_GENS} gens then watch ${WATCH_GENS} gens`);
 }
@@ -919,61 +902,40 @@ function loadPreset(name) {
 let painting = false, paintValue = 1;
 function cellFromXY(px, py) {
   const c = Math.floor(px / CELL), r = Math.floor(py / CELL);
-  return (r &gt;= 0 &amp;&amp; r &lt; ROWS &amp;&amp; c &gt;= 0 &amp;&amp; c &lt; COLS) ? idx(r, c) : -1;
+  return (r >= 0 && r < ROWS && c >= 0 && c < COLS) ? idx(r, c) : -1;
 }
 function getCanvasXY(e) {
   const rect = canvas.getBoundingClientRect();
   return [(e.clientX - rect.left) * (W / rect.width), (e.clientY - rect.top) * (H / rect.height)];
 }
-canvas.onmousedown = e =&gt; { const [px,py]=getCanvasXY(e); const i=cellFromXY(px,py); if(i&gt;=0){paintValue=cells[i]?0:1;cells[i]=paintValue;render();painting=true;} };
-canvas.onmousemove = e =&gt; { if(!painting)return; const [px,py]=getCanvasXY(e); const i=cellFromXY(px,py); if(i&gt;=0&amp;&amp;cells[i]!==paintValue){cells[i]=paintValue;render();} };
-canvas.onmouseup = canvas.onmouseleave = () =&gt; painting = false;
+canvas.onmousedown = e => { const [px,py]=getCanvasXY(e); const i=cellFromXY(px,py); if(i>=0){paintValue=cells[i]?0:1;cells[i]=paintValue;render();painting=true;} };
+canvas.onmousemove = e => { if(!painting)return; const [px,py]=getCanvasXY(e); const i=cellFromXY(px,py); if(i>=0&&cells[i]!==paintValue){cells[i]=paintValue;render();} };
+canvas.onmouseup = canvas.onmouseleave = () => painting = false;
 
-// Touch support for iOS/Android
-function getTouchCanvasXY(e) {
-  const rect = canvas.getBoundingClientRect();
-  const t = e.touches[0] || e.changedTouches[0];
-  return [(t.clientX - rect.left) * (W / rect.width), (t.clientY - rect.top) * (H / rect.height)];
-}
-canvas.addEventListener('touchstart', e =&gt; {
-  e.preventDefault();
-  const [px,py] = getTouchCanvasXY(e);
-  const i = cellFromXY(px,py);
-  if (i&gt;=0) { paintValue=cells[i]?0:1; cells[i]=paintValue; render(); painting=true; }
-}, { passive: false });
-canvas.addEventListener('touchmove', e =&gt; {
-  e.preventDefault();
-  if (!painting) return;
-  const [px,py] = getTouchCanvasXY(e);
-  const i = cellFromXY(px,py);
-  if (i&gt;=0 &amp;&amp; cells[i]!==paintValue) { cells[i]=paintValue; render(); }
-}, { passive: false });
-canvas.addEventListener('touchend', () =&gt; painting = false);
-
-canvas.onmouseup = canvas.onmouseleave = () =&gt; painting = false;
+canvas.onmouseup = canvas.onmouseleave = () => painting = false;
 
 // --- Save / Restore ---
 
 function serializeEntries(list) {
-  return list.map(e =&gt; {
+  return list.map(e => {
     let binary = '', seedBinary = '';
-    for (let i = 0; i &lt; e.cells.length; i++) binary += String.fromCharCode(e.cells[i]);
+    for (let i = 0; i < e.cells.length; i++) binary += String.fromCharCode(e.cells[i]);
     const sc = e.seedCells || e.cells;
-    for (let i = 0; i &lt; sc.length; i++) seedBinary += String.fromCharCode(sc[i]);
+    for (let i = 0; i < sc.length; i++) seedBinary += String.fromCharCode(sc[i]);
     return { ...e, cells: btoa(binary), seedCells: btoa(seedBinary) };
   });
 }
 function deserializeEntries(list) {
-  return (list || []).map(e =&gt; {
+  return (list || []).map(e => {
     try {
       const binary = atob(e.cells);
       const cells = new Uint8Array(binary.length);
-      for (let i = 0; i &lt; binary.length; i++) cells[i] = binary.charCodeAt(i);
+      for (let i = 0; i < binary.length; i++) cells[i] = binary.charCodeAt(i);
       let seedCells = cells;
       if (e.seedCells) {
         const sb = atob(e.seedCells);
         seedCells = new Uint8Array(sb.length);
-        for (let i = 0; i &lt; sb.length; i++) seedCells[i] = sb.charCodeAt(i);
+        for (let i = 0; i < sb.length; i++) seedCells[i] = sb.charCodeAt(i);
       }
       return { ...e, cells, seedCells };
     } catch(err) { return null; }
@@ -1014,26 +976,14 @@ $('btn-save').onclick = function () {
   const state   = collectState();
   const json    = JSON.stringify(state);
   const escaped = json.replace(/\\/g, '\\\\').replace(/`/g, '\\`');
-  // Use XMLSerializer for better cross-browser (incl. iOS Safari) compatibility
-  const serializer = new XMLSerializer();
-  const src = serializer.serializeToString(document) || document.documentElement.outerHTML;
-  const newBlock = `&lt;!-- SAVED_STATE_START --&gt;\n&lt;script id="saved-state-tag"&gt;\nwindow.__GLIDER_SAVED_STATE__ = JSON.parse(\`${escaped}\`);\n&lt;\/script&gt;\n&lt;!-- SAVED_STATE_END --&gt;`;
-  const updated = src.replace(/&lt;!-- SAVED_STATE_START --&gt;[\s\S]*?&lt;!-- SAVED_STATE_END --&gt;/, newBlock);
-  const blob = new Blob([updated], { type: 'text/html' });
-  const url  = URL.createObjectURL(blob);
-  const a    = document.createElement('a');
-  a.href     = url;
+  const src     = document.documentElement.outerHTML;
+  const newBlock = `<!-- SAVED_STATE_START -->\n<script id="saved-state-tag">\nwindow.__GLIDER_SAVED_STATE__ = JSON.parse(\`${escaped}\`);\n<\/script>\n<!-- SAVED_STATE_END -->`;
+  const updated = src.replace(/<!-- SAVED_STATE_START -->[\s\S]*?<!-- SAVED_STATE_END -->/, newBlock);
+  const a = document.createElement('a');
+  a.href = URL.createObjectURL(new Blob([updated], { type: 'text/html' }));
   a.download = document.title.toLowerCase().replace(/\s+/g, '_') + '_saved.html';
-  // iOS Safari doesn't support download attribute — open in new tab
-  const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent);
-  if (isIOS) {
-    window.open(url, '_blank');
-  } else {
-    document.body.appendChild(a);
-    a.click();
-    document.body.removeChild(a);
-  }
-  setTimeout(() =&gt; URL.revokeObjectURL(url), 10000);
+  a.click();
+  URL.revokeObjectURL(a.href);
 };
 
 syncToggles();
@@ -1042,8 +992,7 @@ reseed();
 // Restore saved state after normal init so it overwrites defaults
 if (window.__GLIDER_SAVED_STATE__) restoreState(window.__GLIDER_SAVED_STATE__);
 lastFrameTime = performance.now();
-// Don't autostart — require user to press Play (needed for iOS Safari)
-render();
+requestAnimationFrame(loop);
 </script>
 
 
