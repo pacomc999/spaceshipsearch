@@ -1,7 +1,7 @@
 <html lang="en"><head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Glider Hunter v18</title>
+<title>Glider Hunter v1.22</title>
 <style>
   * { box-sizing: border-box; margin: 0; padding: 0; }
   body { font-family: system-ui, sans-serif; background: #f4f3ee; color: #2c2c2a; padding: 12px; }
@@ -92,6 +92,8 @@
   .ctrl-row input[type=number]:focus { outline: none; border-color: #1a5fa8; box-shadow: 0 0 0 2px rgba(26,95,168,0.2); }
   #info-bar { font-size: 12px; color: #888780; border-top: 0.5px solid #cac8bf; padding-top: 8px; }
   @media (prefers-color-scheme: dark) { #info-bar { border-color: #44423e; } }
+  .explain-text { font-size:13px; line-height:1.7; color:#2c2c2a; }
+  @media (prefers-color-scheme: dark) { .explain-text { color:#d3d1c7; } }
   .preset-row { display: flex; gap: 6px; flex-wrap: wrap; margin-bottom: 10px; }
   .rules-row { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
   #catalogue-col { display: flex; flex-direction: column; gap: 10px; }
@@ -122,7 +124,7 @@
 </head>
 <body>
 <div id="app">
-  <h1>Glider Hunter — v18</h1>
+  <h1>Glider Hunter — v1.22</h1>
 
   <div id="top-bar">
     <button class="" id="btn-play">▶ Play</button>
@@ -290,6 +292,21 @@
   </div>
 
   <div id="info-bar">Rule: B3/S23 · 30×30 torus · Seed: whitenoise · Warmup 2500 gens then watch 300 gens</div>
+
+  <div class="panel" style="margin-top:4px">
+    <div class="panel-title">What is Glider Hunter?</div>
+    <p style="font-size:13px;line-height:1.7" class="explain-text" style="margin-bottom:10px">
+      Glider Hunter is an interactive browser tool for exploring <strong>cellular automata</strong> — mathematical systems where a grid of cells evolves over time according to simple rules about their neighbors. The most famous example is Conway's Game of Life (rule B3/S23), where a dead cell is born if it has exactly 3 live neighbors, and a live cell survives if it has 2 or 3. Despite the simplicity of these rules, extraordinarily complex behaviors emerge — including <strong>spaceships</strong>, which are small patterns that travel across the grid indefinitely, returning to their original shape after a fixed number of steps. Finding spaceships by hand is tedious. Glider Hunter automates the search by repeatedly seeding a small random cluster of cells in the center of the grid, letting the system evolve, and watching the <strong>center of mass</strong> of all live cells for a telltale sign: if something is moving persistently across the torus boundary, the mean position will cross zero repeatedly. When that happens, the state is saved as a candidate for you to review later.
+    </p>
+    <div class="panel-title">How to use it</div>
+    <p class="explain-text">
+      Press <strong>▶ Play</strong> to start the simulation. The tool will automatically cycle through random seeds — each seed goes through a <strong>warmup phase</strong> (where the chaotic initial noise settles) followed by a <strong>watch window</strong> (where it listens for zero-crossings of the center of mass). If a crossing is detected, a snapshot is saved in the candidates list and the tool moves on to the next seed immediately. You can adjust the warmup and watch durations in generation counts, change the seeding strategy from the dropdown (try <em>low density soup</em> or <em>random polyominoes</em> for heavier spaceships), and tune the simulation speed. When you find a candidate worth keeping, load it by clicking the thumbnail, watch it evolve from the original seed, and if it's a genuine spaceship press <strong>★ Add to catalogue</strong> to name and preserve it. Hit <strong>💾 Save</strong> at any time to download a copy of the file with your entire catalogue and candidate list embedded — ready to share or upload to GitHub.
+    </p>
+  </div>
+
+  <div style="font-size:11px;color:#888780;text-align:right;padding-top:4px">
+    Created by Francisco Martinez Checa — March 2026
+  </div>
 </div>
 
 <!-- SAVED_STATE_START -->
